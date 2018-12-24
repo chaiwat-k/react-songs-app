@@ -9,7 +9,9 @@ class SongList extends React.Component {
             return (
                 <div className="item" key={song.title}>
                     <div className="right floated content">
-                        <button className="ui button primary">
+                        <button 
+                        onClick={() => this.props.selectSong(song)}
+                        className="ui button primary">
                             Select
                         </button>
                     </div>
@@ -21,8 +23,7 @@ class SongList extends React.Component {
         });
     }
 
-    render(){
-        console.log(this.props);
+    render(){        
         return (
             <div className="ui divided list">{this.renderList()}</div>
         );
@@ -35,4 +36,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {selectSong})(SongList);
+export default connect(
+    mapStateToProps, 
+    { selectSong }
+)(SongList);
